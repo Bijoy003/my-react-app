@@ -14,6 +14,10 @@ export default function Nav() {
             {labs.length} {labs.length === 1 ? "lesson" : "lessons"}
           </span>
 
+          <Link to="/member" className="text-ink-muted hover:text-ink">
+            Member area
+          </Link>
+
           {firstLab && (
             <Link
               to={`/labs/${firstLab.track}/${firstLab.id}`}

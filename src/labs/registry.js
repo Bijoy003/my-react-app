@@ -7,10 +7,6 @@ export const TRACK_META = {
     label: "React",
     blurb: "Components, state and the rendering model.",
   },
-  nextjs: {
-    label: "Next.js",
-    blurb: "Routing, server components and data fetching.",
-  },
 };
 
 const TRACK_ORDER = Object.keys(TRACK_META);

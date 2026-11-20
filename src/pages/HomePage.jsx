@@ -81,8 +81,8 @@ export default function HomePage() {
           The registry in <Code>src/labs/registry.js</Code> uses{" "}
           <Code>{"import.meta.glob('./**/lab.js')"}</Code> to find every lesson
           folder at build time. Create{" "}
-          <Code>src/labs/react/use-effect/lab.js</Code> and the lesson appears
-          in the sidebar and at its own URL, with no other edits.
+          <Code>src/labs/react/error-boundaries/lab.js</Code> and the lesson
+          appears in the sidebar and at its own URL, with no other edits.
         </p>
       </Section>
     </>

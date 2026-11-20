@@ -25,11 +25,17 @@ src/
   main.jsx                 createRoot(...).render(<BrowserRouter><App />)
   App.jsx                  Route table only
   index.css                Tailwind import, design tokens, dark mode variables
+  auth/
+    auth-context.js        AuthContext + useAuth (pretend, in-memory auth)
+    AuthProvider.jsx       Sign-in state for the whole app
+    RequireAuth.jsx        Guard: redirect to /sign-in, remember the target
   layout/
     Layout.jsx             Header, sidebar, scroll restoration, <Outlet />
   pages/
     HomePage.jsx           Hero, concept map, "how a lesson is stored"
     LessonPage.jsx         One lesson: demo, notes, prev/next
+    SignInPage.jsx         Pretend sign-in, redirects back after success
+    MemberPage.jsx         The guarded /member route
     NotFoundPage.jsx       Unknown track or slug
   labs/
     registry.js            Discovers every **/lab.js with import.meta.glob
@@ -38,26 +44,10 @@ src/
         lab.js             Metadata: id, track, order, level, title, Demo, Notes
         Demo.jsx           The live example
         Notes.jsx          What / how / gotcha
-      components/
-        lab.js             Metadata: id, track, order, level, title, Demo, Notes
-        Demo.jsx           The live example
-        Notes.jsx          What / how / gotcha
-      props/
-        lab.js             Metadata: id, track, order, level, title, Demo, Notes
-        Demo.jsx           The live example
-        Notes.jsx          What / how / gotcha
-      composition/
-        lab.js             Metadata: id, track, order, level, title, Demo, Notes
-        Demo.jsx           The live example
-        Notes.jsx          What / how / gotcha
-      conditional-rendering/
-        lab.js             Metadata: id, track, order, level, title, Demo, Notes
-        Demo.jsx           The live example
-        Notes.jsx          What / how / gotcha
-      list-rendering/
-        lab.js             Metadata: id, track, order, level, title, Demo, Notes
-        Demo.jsx           The live example
-        Notes.jsx          What / how / gotcha
+      ...                  One folder per lesson — 15 today. A few keep a
+                           helper file beside the demo (api.js, basket.js,
+                           compute.js, validate.js); see ROADMAP.md for the
+                           full list.
   components/              Shared UI: Card, Section, Feature, Hero, Nav, ...
   data/basics.js           The concept map on the home page
 ```
