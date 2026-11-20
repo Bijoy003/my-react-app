@@ -34,7 +34,27 @@ src/
   labs/
     registry.js            Discovers every **/lab.js with import.meta.glob
     react/
+      jsx/
+        lab.js             Metadata: id, track, order, level, title, Demo, Notes
+        Demo.jsx           The live example
+        Notes.jsx          What / how / gotcha
+      components/
+        lab.js             Metadata: id, track, order, level, title, Demo, Notes
+        Demo.jsx           The live example
+        Notes.jsx          What / how / gotcha
+      props/
+        lab.js             Metadata: id, track, order, level, title, Demo, Notes
+        Demo.jsx           The live example
+        Notes.jsx          What / how / gotcha
+      composition/
+        lab.js             Metadata: id, track, order, level, title, Demo, Notes
+        Demo.jsx           The live example
+        Notes.jsx          What / how / gotcha
       conditional-rendering/
+        lab.js             Metadata: id, track, order, level, title, Demo, Notes
+        Demo.jsx           The live example
+        Notes.jsx          What / how / gotcha
+      list-rendering/
         lab.js             Metadata: id, track, order, level, title, Demo, Notes
         Demo.jsx           The live example
         Notes.jsx          What / how / gotcha

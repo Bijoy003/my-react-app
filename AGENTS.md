@@ -63,6 +63,9 @@ src/data/basics.js        the home-page concept map
 
 ## Do not
 
+- Do not write lesson code for the owner. `src/` is theirs to type; propose a
+  plan and review instead. Docs (`README.md`, `ROADMAP.md`, `AGENTS.md`) are
+  fair game. The `mentor` agent in `.opencode/agents/` enforces this.
 - Do not delete files you did not create without checking `ROADMAP.md` and git
   history first.
 - Do not add dependencies without recording the reason in the roadmap's

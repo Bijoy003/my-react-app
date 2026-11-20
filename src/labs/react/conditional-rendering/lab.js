@@ -4,7 +4,7 @@ import Notes from "./Notes";
 export default {
   id: "conditional-rendering",
   track: "react",
-  order: 1,
+  order: 5,
   level: "core",
   title: "Conditional rendering",
   summary:

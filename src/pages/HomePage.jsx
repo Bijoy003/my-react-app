@@ -22,7 +22,7 @@ export default function HomePage() {
             to={`/labs/${firstLab.track}/${firstLab.id}`}
             className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
-            Start with {firstLab.title.toLowerCase()}
+            Start with {firstLab.title}
           </Link>
         )}
         <a
@@ -37,7 +37,7 @@ export default function HomePage() {
         id="concepts"
         eyebrow="01 — Concepts"
         title="The map"
-        intro={`${lessonCount} lesson${lessonCount === 1 ? "" : "s"} written so far. The grey cards are placeholders that get filled in as each topic is learned.`}
+        intro={`${lessonCount} lesson${lessonCount === 1 ? "" : "s"} written so far. Every card opens a live demo and its notes.`}
       >
         <ul className="grid gap-6 sm:grid-cols-2">
           {features.map((feature) => (

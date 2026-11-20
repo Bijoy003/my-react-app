@@ -7,24 +7,28 @@ export const features = [
     icon: "</>",
     title: "JSX",
     text: "HTML-shaped syntax compiled to function calls. Everything on this page is JSX, including the attributes.",
+    href: "/labs/react/jsx",
   },
   {
     id: "components",
     icon: "f()",
     title: "Functional components",
     text: "A component is a function that returns markup. Capitalised name, no class, no `this`.",
+    href: "/labs/react/components",
   },
   {
     id: "props",
     icon: "->",
     title: "Props",
     text: "Read-only inputs passed from parent to child. Destructure them in the parameter list to keep things short.",
+    href: "/labs/react/props",
   },
   {
     id: "composition",
     icon: "[]",
     title: "Composition",
     text: "Small components nest through `children` and named slots, exactly like the cards and sections on this page.",
+    href: "/labs/react/composition",
   },
   {
     id: "conditional",
@@ -38,6 +42,7 @@ export const features = [
     icon: "map",
     title: "List rendering",
     text: "Turn arrays into elements with `map()` and give each item a stable `key` so React can track it.",
+    href: "/labs/react/list-rendering",
   },
 ];
 
