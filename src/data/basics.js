@@ -107,6 +107,48 @@ export const features = [
     text: "A guard redirects signed-out visitors to sign-in and sends them back where they were heading.",
     href: "/labs/react/protected-routes",
   },
+  {
+    id: "api-integration",
+    icon: "GET",
+    title: "API integration",
+    text: "Fetch JSON, model loading, error and empty states, then keep the list in sync through create, update and delete.",
+    href: "/labs/react/api-integration",
+  },
+  {
+    id: "server-state",
+    icon: "query",
+    title: "Server state",
+    text: "TanStack Query caches responses, tracks freshness, and invalidates a query after a mutation — no effect boilerplate.",
+    href: "/labs/react/server-state",
+  },
+  {
+    id: "zustand",
+    icon: "store",
+    title: "Zustand",
+    text: "A small store outside React, read through selectors. No provider, and components re-render only for the slice they use.",
+    href: "/labs/react/zustand",
+  },
+  {
+    id: "typescript",
+    icon: "ts",
+    title: "TypeScript with React",
+    text: "Type props, state, events and API responses so mistakes surface in the editor instead of the browser.",
+    href: "/labs/react/typescript",
+  },
+  {
+    id: "form-validation",
+    icon: "zod",
+    title: "Form validation",
+    text: "React Hook Form plus a Zod schema: one set of rules, field-level messages, and errors wired to the input for screen readers.",
+    href: "/labs/react/form-validation",
+  },
+  {
+    id: "testing",
+    icon: "test",
+    title: "Testing",
+    text: "Render a component, query it by role, drive real clicks and typing, and mock the API to cover loading, success and error.",
+    href: "/labs/react/testing",
+  },
 ];
 
 export const footerLinks = [

@@ -21,13 +21,16 @@ Update `ROADMAP.md` (Current state + Session log) when work is finished.
 ```
 npm run dev           # Vite dev server, HMR
 npm run build         # production build
+npm test              # Vitest + React Testing Library, once
+npm run test:watch    # Vitest in watch mode
 npm run lint          # ESLint
+npm run typecheck     # tsc --noEmit (TypeScript lesson files)
 npm run format        # Prettier write
 npm run format:check  # Prettier verify
 ```
 
-Before reporting work as done, run `lint`, `format:check`, and `build`, and say
-what the results were.
+Before reporting work as done, run `test`, `lint`, `typecheck`, `format:check`,
+and `build`, and say what the results were.
 
 ## Architecture
 

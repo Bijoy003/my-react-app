@@ -3,6 +3,7 @@ import AuthProvider from "./auth/AuthProvider";
 import RequireAuth from "./auth/RequireAuth";
 import Layout from "./layout/Layout";
 import HomePage from "./pages/HomePage";
+import HooksPage from "./pages/HooksPage";
 import LessonPage from "./pages/LessonPage";
 import MemberPage from "./pages/MemberPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="hooks" element={<HooksPage />} />
           <Route path="labs/:track/:slug" element={<LessonPage />} />
           <Route path="sign-in" element={<SignInPage />} />
           <Route

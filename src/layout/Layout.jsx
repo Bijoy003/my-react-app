@@ -25,9 +25,14 @@ function navLinkClass({ isActive }) {
 function Sidebar() {
   return (
     <nav aria-label="Lessons" className="space-y-8">
-      <NavLink to="/" end className={navLinkClass}>
-        Overview
-      </NavLink>
+      <div className="space-y-1">
+        <NavLink to="/" end className={navLinkClass}>
+          Overview
+        </NavLink>
+        <NavLink to="/hooks" className={navLinkClass}>
+          Hooks reference
+        </NavLink>
+      </div>
 
       {tracks.map((track) => (
         <div key={track.id}>
@@ -70,6 +75,19 @@ function MobileNav() {
         }
       >
         Overview
+      </NavLink>
+
+      <NavLink
+        to="/hooks"
+        className={({ isActive }) =>
+          `whitespace-nowrap rounded-full border px-3 py-1 text-xs ${
+            isActive
+              ? "border-accent bg-accent/10 text-accent"
+              : "border-line text-ink-muted"
+          }`
+        }
+      >
+        Hooks
       </NavLink>
 
       {labs.map((lab) => (

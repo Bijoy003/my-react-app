@@ -13,18 +13,29 @@ Status: ✅ done · 🚧 in progress · ⬜ not started · 💡 optional idea
 
 ## Current state
 
-_Last updated: 2026-11-20_
+_Last updated: 2026-11-23_
 
 | Section   | Hours    | Status |
 | --------- | -------- | ------ |
 | React 19  | 33.5     | 🚧     |
 | **Total** | **33.5** | —      |
 
-- **Phases 1–3 are done: 15 lessons**, in order: `jsx`, `components`, `props`,
-  `composition`, `conditional-rendering`, `list-rendering`, `styling`,
-  `state-events-forms`, `effects-and-refs`, `memoisation`, `react19-actions`,
-  `use-and-ref-props`, `shared-state`, `routing`, `protected-routes`. All
-  fifteen concept cards on the home page link to their lesson.
+- **Phases 1–4 are done and Phase 5 has started: 21 lessons**, in order: `jsx`,
+  `components`, `props`, `composition`, `conditional-rendering`,
+  `list-rendering`, `styling`, `state-events-forms`, `effects-and-refs`,
+  `memoisation`, `react19-actions`, `use-and-ref-props`, `shared-state`,
+  `routing`, `protected-routes`, `api-integration`, `server-state`, `zustand`,
+  `typescript`, `form-validation`, `testing`. All twenty-one concept cards on the
+  home page link to their lesson.
+- **Phase 5 deliverables:** the `testing` lesson's six React Testing Library
+  cases cover loading, success and error, a retry, a typed filter, and the call
+  into a mocked API module. Vitest runs them in jsdom; `npm test` is part of the
+  check suite.
+- **Phase 4 deliverables:** a full CRUD flow against a fake REST module
+  (`api-integration`), one query plus one mutation with cache invalidation
+  (`server-state`), a store-backed reading list with selectors (`zustand`), a
+  typed member directory converted to `.tsx` (`typescript`), and a validated
+  enrolment form with accessible field errors (`form-validation`).
 - **Phase 3 deliverables:** a responsive token-styled page (`styling`), a
   controlled enrolment form (`state-events-forms`), a guestbook form with
   pending and optimistic states (`react19-actions`), a Context + `useReducer`
@@ -35,27 +46,43 @@ _Last updated: 2026-11-20_
   (hands-on `useMemo`/`useCallback`/`memo` with a cache toggle and a render
   counter), `use-and-ref-props` (live `use()` under Suspense and ref-as-prop
   focus), and `routing` (a live inspector for params, search params, nested
-  layouts and navigation). Zustand, REST/CRUD and TanStack Query remain
-  Phase 4 work, as planned.
-- **Styling stays hand-written Tailwind** (see decisions): no shadcn/ui, no new
-  dependencies. Dark mode remains a variable override; no `dark:` classes.
+  layouts and navigation).
+- **Styling stays hand-written Tailwind** (see decisions): no shadcn/ui. Dark
+  mode remains a variable override; no `dark:` classes.
 - **Auth is deliberately pretend:** a name in memory via `src/auth/`, gone on
   refresh. The guard pattern is the lesson; real enforcement belongs on a
   server this lab does not have.
+- **Server data is fake too:** each data lesson (and `testing`) ships its own
+  in-memory API module with latency and a failure switch, so the folders stay
+  self-contained and the lab keeps running under Vite. Swapping in `fetch` is a
+  one-module change.
 - Tracks are declared in `src/labs/registry.js` (`TRACK_META`); the `nextjs`
   entry was removed with the roadmap trim, so `react` is the only track.
 - Every lesson folder is self-contained. Several lessons keep helper files
   beside the demo (`validate.js`, `api.js`, `basket.js`, `compute.js`,
-  `Lists.jsx`) so component files stay presentation-only. `components/` holds
-  only the shared UI the home page and layout use.
-- Tooling is green: `lint`, `format:check`, and `build` all pass (93 modules).
-  All fifteen demos and notes were render-verified through Vite's SSR pipeline
-  (33/33 checks, including registry order and home-card links); the original
-  twelve were also click-through verified earlier (jsdom harness) — see
-  session log.
+  `Lists.jsx`, `useTasks.js`, `useMembers.js`, `store.js`, `schema.js`,
+  `api.ts`, `useMembers.ts`) so component files stay presentation-only, and
+  `testing` keeps its suite in `Demo.test.jsx`. `components/` holds only the
+  shared UI the home page and layout use; `src/test/setup.js` is the only shared
+  test file.
+- **TypeScript is lesson-only:** the app stays JavaScript. The `typescript`
+  lesson is `.tsx`, `tsconfig.json` covers the `.ts`/`.tsx` files, ESLint has a
+  `typescript-eslint` block, and `npm run typecheck` runs `tsc --noEmit`.
+- **Hooks reference page (2026-11-23):** `/hooks` lists every hook the app
+  actually uses — 25 across React, React Router, TanStack Query, React Hook
+  Form, Zustand and the lab's own custom hooks. Each card gives a plain-language
+  "what it does / when to use it" and links to the lesson where it runs. It is a
+  page, not a lesson, because it spans the whole curriculum and needs no demo.
+- Tooling is green: `test` (6/6), `lint`, `typecheck`, `format:check`, and
+  `build` all pass (276 modules). The new `testing` demo and notes were
+  render-verified through Vite's SSR pipeline with registry order (21st) and the
+  home-card link; Phase 4's 40/40 demo/notes check and 14 logic checks still
+  stand from that session. The build still emits a >500 kB chunk warning —
+  Phase 5's performance module is the natural place to split it.
 
-**Next task:** Phase 4 — start **API integration**: REST calls with
-loading/error/empty states against a sample endpoint, then a small CRUD flow.
+**Next task:** Phase 5 — **Accessibility fundamentals**: semantic HTML, labels,
+keyboard navigation, focus management, and accessible feedback, then a keyboard
+audit with fixes.
 
 ## How the plan maps onto this lab
 
@@ -157,26 +184,45 @@ green. The gap-fill lessons were added on 2026-11-20 after an owner review
 against the original plan's topic list; they extend Phase 3 beyond its
 original 11h budget by roughly 1.5h of lesson work.
 
-## Phase 4 — React data, types and forms (8h) ⬜
+## Phase 4 — React data, types and forms (8h) ✅
 
-- ⬜ **API integration (2h).** REST calls, loading/error/empty states,
-  submission, and CRUD workflows. _Deliverable: a small CRUD flow against a
-  sample endpoint._
-- ⬜ **Server-state management (1.5h).** TanStack Query: queries, mutations,
-  refetching, and cache invalidation. _Deliverable: one query and one mutation._
-- ⬜ **Zustand (1h).** A small store, actions, selectors; choosing between local
-  state, Context, and Zustand. Redux stays out of the core plan. _Deliverable: a
-  store-backed feature._
-- ⬜ **TypeScript with React (2h).** Props, state, events, forms, API responses,
-  reusable components, and typed custom hooks. _Deliverable: one feature
-  converted to TypeScript._
-- ⬜ **Form validation (1.5h).** React Hook Form with Zod, reusable rules, and
-  accessible field-level errors. _Deliverable: a validated form._
+- ✅ **API integration (2h).** `api-integration`: a full create/update/delete
+  flow with loading, error and empty states, a retry path, and a network-failure
+  switch. _Deliverable: the CRUD task list._
+- ✅ **Server-state management (1.5h).** `server-state`: `useQuery` for the list,
+  `useMutation` for add and delete, `invalidateQueries` after each mutation,
+  stale data kept on screen during refetch. _Deliverable: one query and one
+  mutation._
+- ✅ **Zustand (1h).** `zustand`: a reading-list store with actions, a filter,
+  and per-slice selectors; notes compare local state, Context, Zustand and
+  server state. _Deliverable: the store-backed reading list._
+- ✅ **TypeScript with React (2h).** `typescript`: a typed member directory with
+  `Member`/`Role` types, typed props, state, events, API response and custom
+  hook. The app stays JavaScript; the lesson is `.tsx` and `tsc --noEmit`
+  checks it. _Deliverable: one feature converted to TypeScript._
+- ✅ **Form validation (1.5h).** `form-validation`: React Hook Form with a Zod
+  schema, shared rules, field-level messages, `aria-invalid`/`aria-describedby`,
+  and a fake submit. _Deliverable: the validated enrolment form._
 
-## Phase 5 — React quality (13h) ⬜
+Review notes: every data lesson owns its fake API so the folder remains
+deletable. The server-state board is split into a hook, a list and a board
+component; the other entry points are 70–110 lines, with repeated rows in
+sibling components. The `typescript` lesson forced the first lint/typecheck
+split: ESLint now has a `typescript-eslint` block and `npm run typecheck` is
+part of the check suite. SSR smoke test: 20 demos + 20 notes render (40/40),
+orders 1–20, 20 home cards linked; 14 logic checks cover CRUD, offline
+rejection, store actions, schema validation and the resolver. The build warns
+about a 539 kB chunk; lazy-loading lessons is Phase 5 performance work, not a
+Phase 4 defect.
 
-- ⬜ **React testing (2h).** React Testing Library, user interactions, mocked API
-  calls. _Deliverable: tests for loading, success, and error states._
+## Phase 5 — React quality (13h) 🚧
+
+- ✅ **React testing (2h).** `testing`: a member directory that really loads,
+  fails and retries, plus six Vitest + React Testing Library cases in
+  `Demo.test.jsx`. The notes cover role and label queries, `getBy` vs
+  `findBy`, `userEvent`, and `vi.mock` on the demo's own API module.
+  _Deliverable: tests for loading, success and error states, with a retry, a
+  typed filter and a mocked API call._
 - ⬜ **Accessibility fundamentals (2.5h).** Semantic HTML, labels, keyboard
   navigation, focus management, accessible feedback. _Deliverable: a keyboard
   audit and fixes._
@@ -192,6 +238,12 @@ original 11h budget by roughly 1.5h of lesson work.
   presentation. _Deliverable: an extracted hook._
 - ⬜ **Suspense and error boundaries (1.5h).** Async UI fallbacks and graceful
   rendering failures. _Deliverable: a loading fallback and an error boundary._
+
+Review notes (React testing): the tests live beside the demo so the lesson
+folder stays deletable, and they assert only user-visible output — roles,
+labels, text and the calls into the mocked API module. The suite runs in about
+three seconds. No shared fixtures were added; `src/test/setup.js` holds only the
+jest-dom import and cleanup, so a second test file costs nothing.
 
 ## Parked from the original plan 💡
 
@@ -250,9 +302,10 @@ towards the plan's hours.
 
 ## Open questions
 
-- **TypeScript conversion.** Convert the lab app when the TypeScript module
-  starts, or keep the app in JavaScript and write only new lessons in `.tsx`?
-  The first is cleaner; the second is faster and keeps old lessons untouched.
+- **TypeScript conversion.** Resolved on 2026-11-23: keep the app in JavaScript;
+  the TypeScript lesson is written in `.tsx` and checked with `tsc --noEmit`. A
+  full conversion can be revisited after the testing phase, when typed tests
+  would add more value than converting old demos.
 
 ## Conventions
 
@@ -288,22 +341,33 @@ towards the plan's hours.
 | 2026-11-20 | Pretend client-side auth for the guarded route             | No backend in the lab; the guard teaches the pattern, a server enforces                                                                                               |
 | 2026-11-20 | Protected-routes demo drives the real `/member` route      | React Router v7 throws on a nested `MemoryRouter`; a sandbox cannot render inside the app router                                                                      |
 | 2026-11-20 | Gap-fill lessons before Phase 4                            | Owner review found notes-only topics (`useMemo`/`useCallback`, `use()`, ref-as-prop) and untaught routing basics; added `memoisation`, `use-and-ref-props`, `routing` |
+| 2026-11-23 | Added TanStack Query and Zustand                           | Both are named Phase 4 deliverables; hand-rolling their behaviour would obscure the lesson                                                                            |
+| 2026-11-23 | Added React Hook Form, Zod and `@hookform/resolvers`       | The plan's form-validation module needs a schema resolver; repeating Phase 3's hand-written validation would teach nothing new                                        |
+| 2026-11-23 | Added TypeScript + `typescript-eslint`, kept the app in JS | Resolves the open question: only the `typescript` lesson is `.tsx`; `tsc --noEmit` checks it, and old lessons stay untouched                                          |
+| 2026-11-23 | Each data lesson ships its own fake API module             | Folders stay self-contained and deletable, and the lab needs no server, database or secret                                                                            |
+| 2026-11-23 | Accepted the >500 kB build chunk for now                   | Query, Zod and React Hook Form are not small; lazy-loading lessons is scheduled as Phase 5 performance work                                                           |
+| 2026-11-23 | Hooks guide is a page at `/hooks`, not a lesson            | It spans all lessons and has no single demo; a lesson folder would force a fake demo and break the one-topic-per-folder rule                                          |
+| 2026-11-23 | Added Vitest, jsdom and React Testing Library              | The testing module needs a runner, a DOM and user-event simulations; all three are the plan's named tools, and Vitest reuses the Vite config                          |
 
 ## Session log
 
-| Date       | What changed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-11-19 | Replaced the Vite template with a React Basics landing page; added Prettier config + scripts.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 2026-11-20 | Phase 1: router, `Layout`, registry, `LessonPage`, conditional-rendering lesson, README rewrite.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| 2026-11-20 | Added this roadmap and `AGENTS.md`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 2026-11-20 | Phase 2 start: `jsx` lesson (demo + notes), `conditional-rendering` renumbered to 5, home CTA.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| 2026-11-20 | Added the `mentor` agent: lesson code is the owner's, docs stay with the agent.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| 2026-11-20 | Phase 2: `components` lesson (capitalisation toggle demo), home card linked, README structure.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| 2026-11-20 | Phase 2 complete: `props`, `composition`, `list-rendering`; all six cards linked; tooling green.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| 2026-11-20 | Adopted the 80-hour React/Next.js plan; roadmap regrouped into Phases 3–8 with mapping rules.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 2026-11-20 | Trimmed roadmap to React-only; parked Next.js/backend/final project; removed the mentor agent and the owner-writes-code rule.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 2026-11-20 | Phase 3 complete: six lessons (`styling` → `protected-routes`), `/member` guarded route with sign-in, home map extended to 12 cards; lint/format/build green.                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 2026-11-20 | Fixed two render crashes: `useFormStatus` now imported from `react-dom` (was `react`); `protected-routes` demo rewritten to drive the real `/member` guard instead of a nested `MemoryRouter`. Verified all 12 demos at runtime (jsdom, 33/33); lint/format/build green.                                                                                                                                                                                                                                                                                               |
-| 2026-11-20 | Phase 3 gap-fill: added `memoisation` (order 10), `use-and-ref-props` (order 12), `routing` (order 14); renumbered `react19-actions`→11, `shared-state`→13, `protected-routes`→15; home map now 15 cards; cross-links added in `effects-and-refs` and `react19-actions` notes. Memoisation demo reworked twice to satisfy the react-hooks compiler lint rules (no ref writes or setState in render/effects; counter writes DOM from an effect). SSR smoke test: 15 demos + 15 notes render, orders 1–15, all cards link (33/33). lint/format/build green (93 modules). |
-| 2026-11-20 | Investigated "actions demo not working" (blank page in dev): verified the demo end-to-end with a throwaway jsdom harness — full app, StrictMode, dev and prod React, all 10 interaction checks pass (optimistic row, pending, rollback, draft, empty error). No code bug; the running dev server's dep cache was disturbed by the temporary jsdom install/prune (lockfile change → re-optimisation). Fix: restart dev server + hard refresh. Harness and jsdom removed; no dependency added.                                                                           |
-| 2026-11-20 | Fixed "Link is not defined" crash on `/labs/react/react19-actions`: the file on disk already imported `Link`, but the running dev server served a stale transform without it. Touched `Notes.jsx` to invalidate Vite's cache; verified the served module and an SSR render of the notes (Link present). No source change; ROADMAP.md reformatted; lint/format/build green.                                                                                                                                                                                             |
+| Date       | What changed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2026-11-19 | Replaced the Vite template with a React Basics landing page; added Prettier config + scripts.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 2026-11-20 | Phase 1: router, `Layout`, registry, `LessonPage`, conditional-rendering lesson, README rewrite.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 2026-11-20 | Added this roadmap and `AGENTS.md`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| 2026-11-20 | Phase 2 start: `jsx` lesson (demo + notes), `conditional-rendering` renumbered to 5, home CTA.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 2026-11-20 | Added the `mentor` agent: lesson code is the owner's, docs stay with the agent.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 2026-11-20 | Phase 2: `components` lesson (capitalisation toggle demo), home card linked, README structure.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 2026-11-20 | Phase 2 complete: `props`, `composition`, `list-rendering`; all six cards linked; tooling green.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 2026-11-20 | Adopted the 80-hour React/Next.js plan; roadmap regrouped into Phases 3–8 with mapping rules.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 2026-11-20 | Trimmed roadmap to React-only; parked Next.js/backend/final project; removed the mentor agent and the owner-writes-code rule.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 2026-11-20 | Phase 3 complete: six lessons (`styling` → `protected-routes`), `/member` guarded route with sign-in, home map extended to 12 cards; lint/format/build green.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 2026-11-20 | Fixed two render crashes: `useFormStatus` now imported from `react-dom` (was `react`); `protected-routes` demo rewritten to drive the real `/member` guard instead of a nested `MemoryRouter`. Verified all 12 demos at runtime (jsdom, 33/33); lint/format/build green.                                                                                                                                                                                                                                                                                                                                                                                           |
+| 2026-11-20 | Phase 3 gap-fill: added `memoisation` (order 10), `use-and-ref-props` (order 12), `routing` (order 14); renumbered `react19-actions`→11, `shared-state`→13, `protected-routes`→15; home map now 15 cards; cross-links added in `effects-and-refs` and `react19-actions` notes. Memoisation demo reworked twice to satisfy the react-hooks compiler lint rules (no ref writes or setState in render/effects; counter writes DOM from an effect). SSR smoke test: 15 demos + 15 notes render, orders 1–15, all cards link (33/33). lint/format/build green (93 modules).                                                                                             |
+| 2026-11-20 | Investigated "actions demo not working" (blank page in dev): verified the demo end-to-end with a throwaway jsdom harness — full app, StrictMode, dev and prod React, all 10 interaction checks pass (optimistic row, pending, rollback, draft, empty error). No code bug; the running dev server's dep cache was disturbed by the temporary jsdom install/prune (lockfile change → re-optimisation). Fix: restart dev server + hard refresh. Harness and jsdom removed; no dependency added.                                                                                                                                                                       |
+| 2026-11-20 | Fixed "Link is not defined" crash on `/labs/react/react19-actions`: the file on disk already imported `Link`, but the running dev server served a stale transform without it. Touched `Notes.jsx` to invalidate Vite's cache; verified the served module and an SSR render of the notes (Link present). No source change; ROADMAP.md reformatted; lint/format/build green.                                                                                                                                                                                                                                                                                         |
+| 2026-11-23 | Phase 4 complete: added `api-integration` (16), `server-state` (17), `zustand` (18), `typescript` (19), `form-validation` (20); home map now 20 cards. Added TanStack Query, Zustand, React Hook Form + Zod, and TypeScript tooling; ESLint covers `.ts`/`.tsx` and `npm run typecheck` joins the checks. The app stays JavaScript; only the TypeScript lesson is `.tsx`. Fake APIs live in each lesson folder. Verified 20 demos + 20 notes via SSR (40/40), orders 1-20, 20 cards linked, plus 14 logic checks (CRUD, offline, store, schema, resolver). lint/typecheck/format/build green (268 modules); build warns about a 539 kB chunk, deferred to Phase 5. |
+| 2026-11-23 | Fixed the `vite: stop` task, which failed with "Property \"OwningProcess\" cannot be found" whenever non-connection output reached `Select-Object -ExpandProperty`. Logic moved to `.vscode/stop-vite.ps1`, run via `-File` (no nested quoting); it walks the property with `ForEach-Object`, skips PIDs 0/4, dedupes, and falls back to `netstat` when NetTCPIP is missing. No source change.                                                                                                                                                                                                                                                                     |
+| 2026-11-23 | Added the `/hooks` reference page: 25 hooks in seven groups, each with "what it does", "use it when", and a link to the lesson where it runs. Added `src/data/hooks.js`, `src/pages/HooksPage.jsx`, a route, and sidebar/mobile links. No lesson count change (20 lessons).                                                                                                                                                                                                                                                                                                                                                                                        |
+| 2026-11-23 | Phase 5 start: added the `testing` lesson (order 21) with a member directory that loads, fails and retries, plus `Demo.test.jsx` — six Vitest + React Testing Library cases for loading, success, error, retry, a typed filter and the mocked API module. Added Vitest, jsdom, `@testing-library/react`, `user-event` and `jest-dom`; `npm test` / `test:watch` scripts and `src/test/setup.js`. Home map now 21 cards. Verified the lesson via SSR (registry order, demo loading state, notes sections, card link). test/lint/typecheck/format/build green (276 modules); chunk now 562 kB, still deferred.                                                       |
