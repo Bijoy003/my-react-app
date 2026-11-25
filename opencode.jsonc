@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Long build/test logs were the biggest avoidable context cost.
+  "tool_output": {
+    "max_lines": 600,
+    "max_bytes": 24000,
+  },
+  // Keep a smaller recent tail when the context is compacted.
+  "compaction": {
+    "auto": true,
+    "keep": {
+      "tokens": 12000,
+    },
+  },
+  // Generated output should not wake the file watcher.
+  "watcher": {
+    "ignore": ["dist/**", "coverage/**"],
+  },
+}

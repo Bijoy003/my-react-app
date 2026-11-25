@@ -11,10 +11,16 @@ learning React, so clarity beats cleverness.
 
 ## Read first
 
-1. `ROADMAP.md` — current phase, next task, conventions, decisions, session log.
-2. `README.md` — structure and the "adding a lesson" checklist.
+1. `ROADMAP.md` — kept short: current state, next task, conventions, backlog.
+2. `README.md` — structure and the "adding a lesson" checklist (only when you
+   need it).
 
-Update `ROADMAP.md` (Current state + Session log) when work is finished.
+Detailed history is not a file: git has the pre-compaction roadmap (full phase
+notes, decisions and old session log) at `0572982`, e.g.
+`git show 0572982:ROADMAP.md`. Open that only when you need a date or reasoning.
+
+Update `ROADMAP.md` (Current state + Session log, three lines max) when work is
+finished. Put detail in the commit message; keep the roadmap short.
 
 ## Commands
 
@@ -66,6 +72,22 @@ src/data/basics.js        the home-page concept map
 - Tailwind 4 with tokens from `@theme` in `src/index.css`: prefer `bg-surface`,
   `text-ink`, `border-line`, `text-accent` over raw colours. Dark mode comes from
   the variable overrides, so avoid `dark:` classes.
+
+## Context hygiene
+
+Sessions are expensive; the repo is small but the docs were not.
+
+- Read the short roadmap, then only the files the task touches. Prefer `grep`
+  and `glob` over reading whole folders; read large files in slices.
+- Do not re-read `node_modules/`, `dist/`, `package-lock.json` or the old
+  roadmap in git unless the task truly needs them.
+- Use the `explore` subagent for broad searches; keep the parent context for the
+  actual edit.
+- When a doc grows past its job, cut it back to what is still true; git keeps
+  the old version. New prose stays short: tables and bullets beat paragraphs.
+- Keep the roadmap's session log at five rows or fewer; older detail is in git.
+- `opencode.jsonc` caps tool output and the compaction tail, and keeps `dist/`
+  out of the watcher. Prefer narrow commands so the cap is rarely needed.
 
 ## Do not
 
