@@ -14,7 +14,7 @@ export default function TaskBoard() {
   } = useTaskBoard();
 
   return (
-    <div className="max-w-xl space-y-4">
+    <div className="space-y-4">
       <form onSubmit={submit} className="flex gap-2">
         <input
           value={title}

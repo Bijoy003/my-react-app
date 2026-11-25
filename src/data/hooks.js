@@ -2,7 +2,7 @@
 // page component lets the page stay presentation-only, and the list is easy to
 // extend when a lesson introduces another hook.
 //
-// Checked against src/ on 2026-11-23.
+// Checked against src/ on 2026-11-24.
 
 export const hookGroups = [
   {
@@ -171,8 +171,33 @@ export const hookGroups = [
     ],
   },
   {
+    id: "identity",
+    eyebrow: "06 — Identity and tools",
+    title: "Identity and developer tools",
+    intro:
+      "Two small React hooks: one generates ids that are safe to point ARIA attributes at, the other labels a custom hook in DevTools.",
+    hooks: [
+      {
+        name: "useId",
+        source: "React",
+        what: "Generates a unique, stable id for a component instance. The value is safe to use in the DOM and in aria-* references.",
+        when: "Use it to connect a label to an input, a tab to its panel, or an error to a field without inventing ids that might collide.",
+        lesson: "Accessibility fundamentals",
+        href: "/labs/react/accessibility",
+      },
+      {
+        name: "useDebugValue",
+        source: "React",
+        what: "Adds a label next to a custom hook in React DevTools' Components panel. It only runs while the panel is open.",
+        when: "Use it in a custom hook whose state is not obvious from the component's props, so inspecting a render takes less guessing.",
+        lesson: "Custom hooks",
+        href: "/labs/react/custom-hooks",
+      },
+    ],
+  },
+  {
     id: "libraries",
-    eyebrow: "06 — Libraries",
+    eyebrow: "07 — Libraries",
     title: "Hooks from the data and form libraries",
     intro:
       "These hooks come from the packages added in Phase 4. They follow the same rules as React's own hooks; they just wrap a lot of behaviour for you.",
@@ -221,7 +246,7 @@ export const hookGroups = [
   },
   {
     id: "custom",
-    eyebrow: "07 — Custom",
+    eyebrow: "08 — Custom",
     title: "Custom hooks in this lab",
     intro:
       "A custom hook is just a function whose name starts with use and that calls other hooks. It shares logic, not state, and gives the rest of the app a smaller API to work with.",
@@ -265,6 +290,30 @@ export const hookGroups = [
         when: "Use it to keep query keys, mutations and invalidation in one place while the board component stays presentational.",
         lesson: "Server state",
         href: "/labs/react/server-state",
+      },
+      {
+        name: "useLocalStorage",
+        source: "Custom hook",
+        what: "Reads a JSON value once, keeps it in useState, writes it back in an effect, and returns the value with its setter.",
+        when: "Use it when a small preference or draft should survive a reload, and keep the storage details out of the component.",
+        lesson: "Custom hooks",
+        href: "/labs/react/custom-hooks",
+      },
+      {
+        name: "useRecipeList",
+        source: "Custom hook",
+        what: "Wraps the recipe query so the list, detail and form pages share one cache key and one loading contract.",
+        when: "Use it in the practice app wherever a page needs the recipe collection.",
+        lesson: "Recipe box practice",
+        href: "/practice",
+      },
+      {
+        name: "useRecipeMutations",
+        source: "Custom hook",
+        what: "Groups the create, update and delete mutations and invalidates the recipe list after each successful write.",
+        when: "Use it when several pages write the same collection and should agree about what happens afterwards.",
+        lesson: "Recipe box practice",
+        href: "/practice",
       },
     ],
   },

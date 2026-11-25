@@ -1,5 +1,9 @@
-import Demo from "./Demo";
-import Notes from "./Notes";
+import { lazy } from "react";
+
+// Each lesson's demo and notes load on demand, so the shell does not pay
+// for every topic at startup. The registry still reads this metadata eagerly.
+const Demo = lazy(() => import("./Demo"));
+const Notes = lazy(() => import("./Notes"));
 
 export default {
   id: "effects-and-refs",

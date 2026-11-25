@@ -3,7 +3,7 @@ import Code from "../../../components/Code";
 
 export default function Notes() {
   return (
-    <div className="space-y-8 text-sm leading-relaxed">
+    <div className="space-y-8 text-sm leading-relaxed xl:grid xl:gap-10 xl:space-y-0 xl:[grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))]">
       <section>
         <h3 className="mb-2 font-semibold text-ink">What it is</h3>
         <p>

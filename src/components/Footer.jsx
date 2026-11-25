@@ -4,7 +4,7 @@ import Code from "./Code";
 export default function Footer() {
   return (
     <footer className="border-t border-line px-6 py-10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-[100rem] flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p>
           React 19 + Vite. One folder per lesson under <Code>src/labs</Code>.
         </p>

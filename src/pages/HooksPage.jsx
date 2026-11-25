@@ -98,7 +98,7 @@ export default function HooksPage() {
           title={group.title}
           intro={group.intro}
         >
-          <ul className="grid gap-6 sm:grid-cols-2">
+          <ul className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {group.hooks.map((hook) => (
               <li key={hook.name}>
                 <HookCard hook={hook} />

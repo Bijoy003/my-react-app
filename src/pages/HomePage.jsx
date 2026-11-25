@@ -39,7 +39,7 @@ export default function HomePage() {
         title="The map"
         intro={`${lessonCount} lesson${lessonCount === 1 ? "" : "s"} written so far. Every card opens a live demo and its notes.`}
       >
-        <ul className="grid gap-6 sm:grid-cols-2">
+        <ul className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {features.map((feature) => (
             <li key={feature.id}>
               <Feature {...feature} />
@@ -84,6 +84,37 @@ export default function HomePage() {
           <Code>src/labs/react/error-boundaries/lab.js</Code> and the lesson
           appears in the sidebar and at its own URL, with no other edits.
         </p>
+      </Section>
+      <Section
+        id="practice"
+        eyebrow="03 — Practice"
+        title="Put the pieces together"
+        intro="Every module ends with something real. The recipe box is the Phase 5 exercise: one small CRUD app built from the lessons, with routes, typed data, a validated form and tests."
+      >
+        <div className="grid gap-6 sm:grid-cols-2">
+          <Card title="Recipe box">
+            <p className="text-sm leading-relaxed">
+              Browse, filter, add, edit and remove recipes against a fake API.
+              The list, detail and form are three nested routes, and each write
+              invalidates the shared query cache.
+            </p>
+            <Link
+              to="/practice"
+              className="mt-4 inline-block text-xs font-medium text-accent hover:underline"
+            >
+              Open the practice app →
+            </Link>
+          </Card>
+
+          <Card title="What it exercises">
+            <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed">
+              <li>Nested routes and URL parameters</li>
+              <li>TanStack Query with cache invalidation</li>
+              <li>React Hook Form and a Zod schema, typed end to end</li>
+              <li>Five Vitest cases against a mocked API</li>
+            </ul>
+          </Card>
+        </div>
       </Section>
     </>
   );

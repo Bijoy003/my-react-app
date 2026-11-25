@@ -149,6 +149,41 @@ export const features = [
     text: "Render a component, query it by role, drive real clicks and typing, and mock the API to cover loading, success and error.",
     href: "/labs/react/testing",
   },
+  {
+    id: "accessibility",
+    icon: "a11y",
+    title: "Accessibility fundamentals",
+    text: "Semantic elements, real labels, a keyboard-operated tab list, focus that follows the page, and feedback a screen reader can hear.",
+    href: "/labs/react/accessibility",
+  },
+  {
+    id: "performance",
+    icon: "ms",
+    title: "Practical performance",
+    text: "Profile a commit, cache only the expensive filter, and compare the same interaction before and after with the Profiler API.",
+    href: "/labs/react/performance",
+  },
+  {
+    id: "debugging",
+    icon: "bug",
+    title: "Debugging and developer tools",
+    text: "Reproduce, observe, isolate, fix, verify — with a prepared bug, browser DevTools and the React DevTools panels that find it.",
+    href: "/labs/react/debugging",
+  },
+  {
+    id: "custom-hooks",
+    icon: "use",
+    title: "Custom hooks",
+    text: "Extract behaviour behind a function that starts with use. Two cards share useLocalStorage but keep separate state.",
+    href: "/labs/react/custom-hooks",
+  },
+  {
+    id: "suspense-boundaries",
+    icon: "...",
+    title: "Suspense and error boundaries",
+    text: "A loading fallback while code arrives, and a boundary that keeps a rendering failure inside one panel instead of blanking the page.",
+    href: "/labs/react/suspense-boundaries",
+  },
 ];
 
 export const footerLinks = [

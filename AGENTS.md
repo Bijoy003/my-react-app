@@ -37,10 +37,11 @@ and `build`, and say what the results were.
 ```
 src/main.jsx              BrowserRouter + StrictMode
 src/App.jsx               route table only
-src/layout/Layout.jsx     header, sidebar, scroll restoration, <Outlet />
-src/pages/                HomePage, LessonPage, NotFoundPage
+src/layout/Layout.jsx     header, sidebar, lesson rail, route boundary
+src/pages/                HomePage, HooksPage, LessonPage, NotFoundPage, ...
 src/labs/registry.js      import.meta.glob("./**/lab.js", { eager: true })
 src/labs/<track>/<slug>/  lab.js + Demo.jsx + Notes.jsx
+src/practice/             Recipe box: routed, typed CRUD deliverable
 src/components/           shared UI only
 src/data/basics.js        the home-page concept map
 ```
@@ -48,6 +49,8 @@ src/data/basics.js        the home-page concept map
 - Never edit a registry list by hand. A new `lab.js` is discovered automatically.
 - `lab.js` default-exports `{ id, track, order, level, title, summary, Demo, Notes }`.
   `id` must equal the folder name; links are `/labs/<track>/<id>`.
+- `Demo` and `Notes` are `React.lazy` imports; `LessonPage` owns the Suspense
+  fallback and the error boundary. Keep the metadata import eager.
 - Keep lesson folders self-contained. Shared UI belongs in `src/components/`.
 
 ## Style

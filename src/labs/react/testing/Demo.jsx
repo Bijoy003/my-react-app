@@ -17,7 +17,7 @@ export default function Demo() {
   }
 
   return (
-    <div className="max-w-xl space-y-4">
+    <div className="space-y-4">
       <label className="block text-xs text-ink-muted">
         Filter by name
         <input
